@@ -1,0 +1,10 @@
+RewriteEngine On
+RewriteBase /
+
+# Serve static files (CSS, JS, Images) from the 'static' folder
+RewriteRule ^static/(.*)$ static/$1 [L]
+
+# Route all other requests to index.php (MVC routing)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [QSA,L]
