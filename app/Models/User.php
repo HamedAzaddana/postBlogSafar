@@ -10,7 +10,8 @@ class User extends Model
     {
         $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
         $sql = "INSERT INTO users (`username`, `email`, `password`,`role`) VALUES (?, ?, ?, ?)";
-        $this->query($sql, [$username, $email, $hashedPassword, $role]);
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute([$username, $email, $hashedPassword, $role]);
     }
     public function firstOrCreateUser($username, $email, $password, $role)
     {

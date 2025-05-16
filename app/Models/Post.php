@@ -23,7 +23,8 @@ class Post extends Model
     public function createPost($userId, $title, $description, $image)
     {
         $sql = "INSERT INTO posts (`user_id`, `title`, `description`, `image`) VALUES (?, ?, ?, ?)";
-        $this->query($sql, [$userId, $title, $description, $image]);
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute([$userId, $title, $description, $image]);
     }
     public function firstOrCreatePost($userId, $title, $description, $image)
     {
