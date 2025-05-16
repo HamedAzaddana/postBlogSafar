@@ -10,13 +10,10 @@ use App\Models\User;
 
 session_start();
 
-// Dependency Injection setup
 $di = new DependencyInjector();
 $di->register('PostModel', new Post());
 $di->register('UserModel', new User());
 
-// Initialize Router
-$router = new Router();
 $factory = new ModelFactory();
-$router = new Router($factory); // Inject the factory
+$router = new Router($factory); 
 $router->dispatch($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);

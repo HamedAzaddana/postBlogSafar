@@ -14,6 +14,10 @@ class PostController extends Controller
         $this->postModel = factory_model_instance('post');
     }
 
+    public function home()
+    {
+        return redirect("/posts");
+    }
     public function index()
     {
         $posts = $this->postModel->getAllPosts();

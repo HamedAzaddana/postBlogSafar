@@ -16,7 +16,4 @@ if ($argc > 1 && $argv[1] === 'serve') {
 
     // Execute the command
     passthru($command);
-} else {
-    echo "Usage: php artisan serve\n";
-    echo "Run the PHP built-in server on localhost:8090.\n";
 }
