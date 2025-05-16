@@ -1,0 +1,22 @@
+#!/usr/bin/env php
+<?php
+
+
+
+// Set the path for the public directory and the host
+$host = 'localhost:8090';
+$documentRoot = __DIR__ . '/public';
+
+// Check if the necessary arguments are passed
+if ($argc > 1 && $argv[1] === 'serve') {
+    echo "Starting PHP built-in server at http://$host...\n";
+
+    // Run the PHP built-in server with the specified host and document root
+    $command = "php -S $host -t $documentRoot $documentRoot/index.php";
+
+    // Execute the command
+    passthru($command);
+} else {
+    echo "Usage: php artisan serve\n";
+    echo "Run the PHP built-in server on localhost:8090.\n";
+}

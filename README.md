@@ -15,6 +15,6 @@ set configs in .env file and create init database.
 # Step 3
 Run the command:
  ```bash
-php -S localhost:8090 public/index.php
+php safar serve
 ```
 and then open localhost:8090/login/  to see login page first
