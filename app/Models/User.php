@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\HQ\Model;
+use PDO;
 
 class User extends Model
 {
@@ -25,7 +26,12 @@ class User extends Model
             return $this->firstOrCreateUser($username, $email, $password, $role);
         }
     }
-
+    public function getAllUsers()
+    {
+        $stmt = $this->db->prepare("SELECT * FROM users");
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
     public function getUserByUsername($username)
     {
         $sql = "SELECT * FROM users WHERE username = ?";

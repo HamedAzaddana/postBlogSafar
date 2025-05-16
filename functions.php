@@ -15,9 +15,13 @@ if (!function_exists("redirect")) {
 }
 
 if (!function_exists("env_app")) {
-    function env_app($key, $default = "")
+    function env_app($key, $default = "", $mode = null)
     {
-        $dotenv = Dotenv::createImmutable(__DIR__ . '/');
+        if (!$mode) {
+            $dotenv = Dotenv::createImmutable(__DIR__ . '/');
+        } elseif ($mode == 'test') {
+            $dotenv = Dotenv::createImmutable(__DIR__ . '/','.env.test');
+        }
         $dotenv->load();
         return $_ENV[$key] ?? $default;
     }
