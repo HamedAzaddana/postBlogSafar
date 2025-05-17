@@ -4,7 +4,7 @@ Run the command:
 composer install
 ```
 and
-set configs in .env file and create init database.
+set configs in .env and .env.test files and create their init database.
 
 # Step 2
  Run the file:
@@ -17,4 +17,4 @@ Run the command:
  ```bash
 php safar serve
 ```
-and then open localhost:8090/login/  to see login page first
+and then open localhost:8090/  to see login page first
